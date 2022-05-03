@@ -1,0 +1,13 @@
+
+### Send readiness
+GET http://localhost:5184/healthz/ready HTTP/1.1
+
+### Check liveness
+
+GET http://localhost:5184/healthz/live HTTP/1.1
+
+###
+
+GET http://localhost:5184/metrics HTTP/1.1
+
+###
