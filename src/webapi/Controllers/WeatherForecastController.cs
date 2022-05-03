@@ -29,4 +29,17 @@ public class WeatherForecastController : ControllerBase
         })
         .ToArray();
     }
+
+    [HttpGet(Name = "GetOneWeatherForecast")]
+    public WeatherForecast GetOne()
+    {
+        var rand = new Random();
+
+        return new WeatherForecast
+        {
+            Date = DateTime.Now.AddDays(rand.NextInt64()),
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        };
+    }
 }
