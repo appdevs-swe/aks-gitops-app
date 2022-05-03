@@ -6,3 +6,4 @@ resources:
 - serviceaccount.yaml
 - ingress-backend.yaml
 - ingress.yaml
+- canary.yaml
