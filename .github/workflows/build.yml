@@ -51,6 +51,7 @@ jobs:
           repository: appdevs-swe/aks-gitops-cluster
           token: ${{ secrets.GITHUB_TOKEN }}
           path: aks-gitops-cluster
+          ref: main
       - name: Push changes
         working-directory: aks-gitops-cluster 
         run: |
