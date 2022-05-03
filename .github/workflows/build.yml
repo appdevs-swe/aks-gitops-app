@@ -38,5 +38,5 @@ jobs:
           file: src/webapi/Dockerfile
           push: true
           tags: |
-            ${{ secrets.REGISTRY_SERVER }}/bgdemo/webapi:${{ GITHUB_SHA }}
+            ${{ secrets.REGISTRY_SERVER }}/bgdemo/webapi:${{ github.sha }}
       
