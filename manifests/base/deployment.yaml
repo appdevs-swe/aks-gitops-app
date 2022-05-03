@@ -22,9 +22,10 @@ spec:
       labels:
         app: webapi
     spec:
+      serviceAccountName: webapi
       containers:
       - name: webapi
-        image: kostapetan.azurecr.io/webapi:1.0
+        image: kostapetan.azurecr.io/bgdemo/webapi:c3afc3e4bd85265280148b521e82861ddb444cbe
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
@@ -33,13 +34,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /health/live
-            port: 80
+            port: 5000
           initialDelaySeconds: 30
           timeoutSeconds: 1
         readinessProbe:
           httpGet:
             path: /health/ready
-            port: 80
+            port: 5000
           initialDelaySeconds: 30
           timeoutSeconds: 1
         resources:
