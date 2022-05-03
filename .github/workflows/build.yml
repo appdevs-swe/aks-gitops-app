@@ -52,10 +52,13 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: aks-gitops-cluster
           ref: main
+      - name: Update image
+        working-directory: aks-gitops-cluster
+        run: |
+          sed -i "s|image: kostapetan.azurecr.io/bgdemo/webapi:.*|image: kostapetan.azurecr.io/bgdemo/webapi:${{ github.sha }}|" manifests/base/deployment.yaml
       - name: Push changes
         working-directory: aks-gitops-cluster 
         run: |
-          date > generated.txt
           git config user.name gitops-actions
           git config user.email gitops-actions@kp.com
           git add .
