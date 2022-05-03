@@ -34,7 +34,7 @@ public class WeatherForecastController : ControllerBase
     public WeatherForecast GetOne()
     {
         var rand = new Random();
-
+        // 
         return new WeatherForecast
         {
             Date = DateTime.Now.AddDays(rand.NextInt64()),

@@ -4,7 +4,7 @@ metadata:
   name: webapi
 spec:
   backends:
-  - name: webapi
+  - name: webapi-primary
     port:
       number: 5000
       protocol: http
