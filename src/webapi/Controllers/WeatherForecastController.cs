@@ -18,11 +18,7 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-<<<<<<< HEAD
     [HttpGet(Name = "GetWeatherForecasts")]
-=======
-    [HttpGet(Name = "GetWeatherForecast")]
->>>>>>> main
     public IEnumerable<WeatherForecast> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
