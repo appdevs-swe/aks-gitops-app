@@ -46,6 +46,7 @@ public class WeatherForecastController : ControllerBase
      [HttpGet(Name = "GetTwoWeatherForecasts")]
     public IEnumerable<WeatherForecast> GetTwo()
     {
+        //
         return Enumerable.Range(1, 2).Select(index => new WeatherForecast
         {
             Date = DateTime.Now.AddDays(index),
