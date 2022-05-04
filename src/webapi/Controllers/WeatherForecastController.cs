@@ -54,7 +54,7 @@ public class WeatherForecastController : ControllerBase
         .ToArray();
     }
 
-    [HttpGet("four", Name = "GetTwoWeatherForecasts")]
+    [HttpGet("four", Name = "GetFourWeatherForecasts")]
     public IEnumerable<WeatherForecast> GetFour()
     {
         return Enumerable.Range(1, 4).Select(index => new WeatherForecast
