@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using OpenTelemetry.Metrics;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,27 +10,25 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
-builder.Services.AddOpenTelemetryMetrics(builder =>
-{
-    builder.AddPrometheusExporter();
-});
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseOpenTelemetryPrometheusScrapingEndpoint();
+
 app.UseSwagger();
 app.UseSwaggerUI();
-
-app.UseHttpsRedirection();
+app.UseHttpMetrics();
 
 app.UseAuthorization();
+
+app.MapMetrics();
 
 app.MapControllers();
 
 app.MapHealthChecks("/healthz/ready", new HealthCheckOptions
 {
-    Predicate = healthCheck => healthCheck.Tags.Contains("ready")
+    Predicate = _ => false
 });
 
 app.MapHealthChecks("/healthz/live", new HealthCheckOptions

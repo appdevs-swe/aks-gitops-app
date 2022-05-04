@@ -18,8 +18,8 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "GetWeatherForecasts")]
-    public IEnumerable<WeatherForecast> Get()
+    [HttpGet("weather/all",Name = "GetWeatherForecasts")]
+    public IEnumerable<WeatherForecast> FetchAll()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
@@ -30,21 +30,21 @@ public class WeatherForecastController : ControllerBase
         .ToArray();
     }
 
-    [HttpGet(Name = "GetOneWeatherForecast")]
-    public WeatherForecast GetOne()
+    [HttpGet("weather/one",Name = "GetOneWeatherForecast")]
+    public WeatherForecast FetchOne()
     {
         var rand = new Random();
         // 
         return new WeatherForecast
         {
-            Date = DateTime.Now.AddDays(rand.NextInt64()),
+            Date = DateTime.Now.AddDays(rand.NextInt64(60)),
             TemperatureC = Random.Shared.Next(-20, 55),
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         };
     }
 
-     [HttpGet(Name = "GetTwoWeatherForecasts")]
-    public IEnumerable<WeatherForecast> GetTwo()
+     [HttpGet("weather/two", Name = "GetTwoWeatherForecasts")]
+    public IEnumerable<WeatherForecast> FetchTwo()
     {
         //
         return Enumerable.Range(1, 2).Select(index => new WeatherForecast
