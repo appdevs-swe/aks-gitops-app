@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace webapi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("weather")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -18,7 +18,7 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet("weather/all",Name = "GetWeatherForecasts")]
+    [HttpGet("all",Name = "GetWeatherForecasts")]
     public IEnumerable<WeatherForecast> FetchAll()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -30,7 +30,7 @@ public class WeatherForecastController : ControllerBase
         .ToArray();
     }
 
-    [HttpGet("weather/one",Name = "GetOneWeatherForecast")]
+    [HttpGet("one",Name = "GetOneWeatherForecast")]
     public WeatherForecast FetchOne()
     {
         var rand = new Random();
@@ -44,7 +44,7 @@ public class WeatherForecastController : ControllerBase
         };
     }
 
-     [HttpGet("weather/two", Name = "GetTwoWeatherForecasts")]
+     [HttpGet("two", Name = "GetTwoWeatherForecasts")]
     public IEnumerable<WeatherForecast> FetchTwo()
     {
         //
